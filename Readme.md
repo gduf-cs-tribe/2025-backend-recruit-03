@@ -44,7 +44,7 @@
 标准的仓库应该是什么样子：
 
 - https://github.com/vuejs/vue
-- https://github.com/Moemu/MuiceBot
+- https://github.com/denoland/deno
 - https://gitee.com/dromara/sa-token
 
 上述项目，能够将每次的部分代码更改提交仓库，同时每次 commit 都能清晰的说明这次提交做了什么，并且项目的 `README` 等文档写的非常详细，能够指引阅读者怎么使用你的项目，这是很重要的一点。
@@ -113,9 +113,9 @@
 
 4. **Suggestions/修改建议:** 针对上述缺点给出的建议，这个建议可以不局限于仓库本身，也可聚焦于个人改进
 
-5. **Questions for Authors/给作者的问题:** （可选）Reviwer 可以按需要提出对仓库具体实现细节的疑问，作者拥有是否选择回答的权力，回答结果可能会影响最终评分
+5. **Questions for Authors/给作者的问题:** （可选）Reviwer 可以按需要提出对仓库具体实现细节的疑问，作者拥有是否选择回答的权利，回答结果可能会影响最终评分
 
-6. **Overall Assessment/总体评分:** **满分 10 分，6 分及格。当且仅当达到及格线及以上分数时才会获得面试资格。**评分细节如下：
+6. **Overall Assessment/总体评分: 满分 10 分，6 分及格。当且仅当达到及格线及以上分数时才会获得面试资格。**评分细节如下：
    - **Core features/核心功能完成度:** (4分) 是否按要求完成了所有必须的功能？（若仓库无法正常运行此处会酌情扣分）
    - **Extra features/可选功能完成度:** (2分) 是否完成了两个及以上的可选功能？
    - **Documentation completeness/文档完备度:** (2分) 文档是否齐全？需要覆盖仓库内容概述、技术栈使用情况、环境搭建指南、测试指南等内容
