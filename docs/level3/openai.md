@@ -54,7 +54,13 @@
 - 未携带或非法 Token 的请求应返回 `401 Unauthorized`
 - 鉴权逻辑应统一处理（如中间件 / 拦截器）
 
-### 2. 文本生成接口（核心）
+*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/authentication)
+
+### 2. 文本生成接口（核心） - Chat Completions
+
+此接口用于处理对话生成请求，支持流式与非流式两种输出方式。
+
+*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/chat), [阿里云百炼通用千文 OpenAI 兼容文档](https://bailian.console.aliyun.com/cn-beijing/?tab=api#/api/?type=model&url=3016807)
 
 #### Endpoint 示例
 
@@ -95,9 +101,13 @@ POST /v1/chat/completions
 - 删除某一次生成结果 `DELETE /v1/chat/completions/{completion_id}`
 - 取消正在进行的生成请求 `POST /v1/chat/completions/{completion_id}/cancel`
 
+*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/responses)
+
 ### 4. 模型列表
 
 列出当前可用的模型，并提供每个模型的基本信息，例如所有者和可用性。
+
+*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/models)
 
 #### Endpoint 示例
 
@@ -130,6 +140,8 @@ POST /v1/models
 - 文件删除 `DELETE /v1/files/{file_id}`
 - 文件列表查询 `GET /v1/files`
 - 获取文件元信息 `GET /v1/files/{file_id}`
+
+*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/files), [阿里云百炼通用千文 OpenAI 兼容文档](https://bailian.console.aliyun.com/cn-beijing/?tab=api#/api/?type=model&url=2833610)
 
 ### 2. 系统与工程能力
 
@@ -280,7 +292,50 @@ data: [DONE]
 - 每个 chunk 必须是合法 JSON 或明确的结束标识
 - 不允许一次性拼接后再返回
 
-### 2. Models
+### 2. 生成结果管理
+
+#### 获取生成结果
+
+```
+GET /v1/chat/completions/{completion_id}
+```
+
+示例响应
+
+```json
+{
+  "id": "chatcmpl-abc123",
+  "object": "chat.completion",
+  "created": 1710000000,
+  "model": "gpt-4o-mini",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Hello! How can I help you today?"
+      },
+      "finish_reason": "stop"
+    }
+  ]
+}
+```
+
+#### 删除生成结果
+
+```
+DELETE /v1/chat/completions/{completion_id}
+```
+
+#### 取消生成请求
+
+```
+POST /v1/chat/completions/{completion_id}/cancel
+```
+
+### 3. Models
+
+此接口用于列出当前可用的模型，并提供每个模型的基本信息，例如所有者和可用性。
 
 #### Endpoint
 
@@ -304,7 +359,9 @@ GET /v1/models
 }
 ```
 
-### 3. Files（可选）
+### 4. Files（可选）
+
+此接口用于管理模型生成或工具调用所需的文件资源。
 
 #### 上传文件
 
@@ -317,7 +374,7 @@ POST /v1/files
 - `file`: 上传的文件
 - `purpose`: "assistants" / "fine-tune"（可忽略语义，仅做透传）
 
-### 4. 错误响应规范
+### 5. 错误响应规范
 
 当请求非法或鉴权失败时，应返回结构化错误信息。
 
@@ -336,8 +393,16 @@ POST /v1/files
 
 以下资源可用于理解接口行为与 SDK 使用方式：
 
-- [Chat Completions | OpenAI API Reference (需要科学上网)](https://platform.openai.com/docs/api-reference/chat/create)
-- [阿里云百炼通用千文 OpenAI 兼容文档](https://bailian.console.aliyun.com/cn-beijing/?&tab=api#/api/?type=model&url=2712576)
+- [OpenAI API Reference (需要科学上网)](https://developers.openai.com/api/reference/overview)
+- [文档镜像站(部分内容可能已经过时，无需科学上网)](https://ai-doc.it-docs.cn/api-reference_en/introduction)
+- [阿里云百炼通用千文 OpenAI 兼容文档](https://bailian.console.aliyun.com/cn-beijing/?tab=api#/api/?type=model&url=3016807)
+
+以下是根据官方接口实现搭建的示例服务，可用于参考接口行为与测试 SDK 使用：
+
+- [示例服务](http://8.134.203.128:8000/v1)
+- [示例服务的 API 文档](http://8.134.203.128:8000/docs)
+- [示例服务的 openapi.json](http://8.134.203.128:8000/openapi.json)
+- [参考 Python 实现](https://github.com/Moemu/2025-backend-recruit-03-openai/tree/main/Examples/Python)
 
 > 提示：请重点关注 **参数结构、返回格式与流式语义**，而非具体模型能力。
 
