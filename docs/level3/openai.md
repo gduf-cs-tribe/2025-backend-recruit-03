@@ -54,13 +54,13 @@
 - 未携带或非法 Token 的请求应返回 `401 Unauthorized`
 - 鉴权逻辑应统一处理（如中间件 / 拦截器）
 
-*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/authentication)
+\*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/authentication)
 
 ### 2. 文本生成接口（核心） - Chat Completions
 
 此接口用于处理对话生成请求，支持流式与非流式两种输出方式。
 
-*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/chat), [阿里云百炼通用千文 OpenAI 兼容文档](https://bailian.console.aliyun.com/cn-beijing/?tab=api#/api/?type=model&url=3016807)
+\*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/chat), [阿里云百炼通用千文 OpenAI 兼容文档](https://bailian.console.aliyun.com/cn-beijing/?tab=api#/api/?type=model&url=3016807)
 
 #### Endpoint 示例
 
@@ -101,13 +101,13 @@ POST /v1/chat/completions
 - 删除某一次生成结果 `DELETE /v1/chat/completions/{completion_id}`
 - 取消正在进行的生成请求 `POST /v1/chat/completions/{completion_id}/cancel`
 
-*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/responses)
+\*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/responses)
 
 ### 4. 模型列表
 
 列出当前可用的模型，并提供每个模型的基本信息，例如所有者和可用性。
 
-*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/models)
+\*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/models)
 
 #### Endpoint 示例
 
@@ -141,7 +141,7 @@ POST /v1/models
 - 文件列表查询 `GET /v1/files`
 - 获取文件元信息 `GET /v1/files/{file_id}`
 
-*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/files), [阿里云百炼通用千文 OpenAI 兼容文档](https://bailian.console.aliyun.com/cn-beijing/?tab=api#/api/?type=model&url=2833610)
+\*API 文档参考: [官方文档镜像站](https://ai-doc.it-docs.cn/api-reference_en/files), [阿里云百炼通用千文 OpenAI 兼容文档](https://bailian.console.aliyun.com/cn-beijing/?tab=api#/api/?type=model&url=2833610)
 
 ### 2. 系统与工程能力
 
